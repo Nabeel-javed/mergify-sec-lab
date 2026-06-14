@@ -1,11 +1,12 @@
 queue_rules:
   - name: default
-    conditions: []
+    merge_conditions: []
+
 pull_request_rules:
-  - name: live poc stale approval direct
+  - name: F2 bare merge when gate green + label
     conditions:
-      - "#approved-reviews-by>=1"
-      - "label=mergify-go"
+      - check-success=gate
+      - label=go-f2
     actions:
       merge:
-        method: merge
+        method: squash
