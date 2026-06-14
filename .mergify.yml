@@ -3,10 +3,10 @@ queue_rules:
     merge_conditions: []
 
 pull_request_rules:
-  - name: gated merge on approval + label
+  - name: queue on approval + label
     conditions:
       - "#approved-reviews-by>=1"
       - "label=mergify-go"
     actions:
-      merge:
-        method: merge
+      queue:
+        name: default
