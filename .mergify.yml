@@ -3,9 +3,10 @@ queue_rules:
     merge_conditions: []
 
 pull_request_rules:
-  - name: noop marker rule
+  - name: auto-merge on one approval
     conditions:
-      - "label=mergify-noop"
+      - "#approved-reviews-by >= 1"
+      - "-draft"
     actions:
-      comment:
-        message: "noop"
+      merge:
+        method: squash
