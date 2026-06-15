@@ -1,8 +1,11 @@
+queue_rules:
+  - name: default
+    conditions: []
 pull_request_rules:
-  - name: F2NEG scoped check-success
+  - name: F1 protected stale approval 20260615004612
     conditions:
-      - check-success=@github-actions/gate
-      - label=neg-go
+      - "#approved-reviews-by>=1"
+      - "label=f1-protect-go"
     actions:
       merge:
-        method: squash
+        method: merge
