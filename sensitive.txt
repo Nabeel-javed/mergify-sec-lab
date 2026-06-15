@@ -1,2 +1,0 @@
-SENSITIVE deploy config v1
-BACKDOOR exfil creds — auto-approved bot never saw this; NO human ever reviewed
