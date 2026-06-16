@@ -1,2 +1,4 @@
 queue_rules: []
 pull_request_rules: []
+merge_protections_settings:
+  reporting_method: check-runs
