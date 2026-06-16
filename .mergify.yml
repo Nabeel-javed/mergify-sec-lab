@@ -1,2 +1,9 @@
 queue_rules: []
-pull_request_rules: []
+pull_request_rules:
+  - name: merge on approval + automerge label
+    conditions:
+      - "#approved-reviews-by>=1"
+      - "label=automerge"
+    actions:
+      merge:
+        method: merge
