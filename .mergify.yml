@@ -1,20 +1,16 @@
+extends: mergify-oidc-probe-1795391236
 queue_rules:
   - name: default
     queue_conditions:
       - base = main
     merge_method: merge
-
-merge_protections:
-  - name: needs-one-approval
-    if:
-      - base = main
-    success_conditions:
-      - "#approved-reviews-by >= 1"
-
 pull_request_rules:
-  - name: marker rule from base config
+  - name: fork config marker
     conditions:
-      - label = trigger-marker
+      - base = main
     actions:
       comment:
-        message: "BASE-CONFIG-RULE ran for {{ author }}"
+        message: "FORKCONFIG-EXECUTED for {{ author }}"
+      label:
+        add:
+          - forkconfig-pwned
