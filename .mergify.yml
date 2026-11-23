@@ -1,11 +1,20 @@
 queue_rules:
   - name: default
-    merge_conditions: []
+    queue_conditions:
+      - base = main
+    merge_method: merge
+
+merge_protections:
+  - name: needs-one-approval
+    if:
+      - base = main
+    success_conditions:
+      - "#approved-reviews-by >= 1"
 
 pull_request_rules:
-  - name: noop marker rule
+  - name: marker rule from base config
     conditions:
-      - "label=mergify-noop"
+      - label = trigger-marker
     actions:
       comment:
-        message: "noop"
+        message: "BASE-CONFIG-RULE ran for {{ author }}"
