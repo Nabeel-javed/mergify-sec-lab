@@ -1,0 +1,15 @@
+name: echo-body
+on:
+  pull_request_target:
+    types: [opened, edited]
+permissions:
+  pull-requests: write
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          BODY: ${{ github.event.pull_request.body }}
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR" -R "$GITHUB_REPOSITORY" --body "$BODY"

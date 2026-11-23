@@ -1,7 +1,9 @@
 queue_rules:
   - name: default
     queue_conditions:
-      - base = main
+      - -draft
+    merge_conditions:
+      - check-success = gate-never-exists
     merge_method: merge
 
 merge_protections:
