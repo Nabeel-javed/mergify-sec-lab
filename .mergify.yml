@@ -1,15 +1,2 @@
-queue_rules:
-  - name: default
-    queue_conditions:
-      - -draft
-    merge_conditions:
-      - check-success = gate-never-exists
-    merge_method: merge
-
-pull_request_rules:
-  - name: marker rule from base config
-    conditions:
-      - label = trigger-marker
-    actions:
-      comment:
-        message: "BASE-CONFIG-RULE ran for {{ author }}"
+queue_rules: []
+pull_request_rules: []
