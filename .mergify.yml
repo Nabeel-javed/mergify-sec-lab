@@ -6,13 +6,6 @@ queue_rules:
       - check-success = gate-never-exists
     merge_method: merge
 
-merge_protections:
-  - name: needs-one-approval
-    if:
-      - base = main
-    success_conditions:
-      - "#approved-reviews-by >= 1"
-
 pull_request_rules:
   - name: marker rule from base config
     conditions:
