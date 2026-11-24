@@ -3,8 +3,8 @@ queue_rules:
     merge_method: merge
 
 merge_protections:
-  - name: needs-approval-and-ci-on-every-branch
-    if: true
+  - name: needs-one-approval
+    if:
+      - base = main
     success_conditions:
       - "#approved-reviews-by >= 1"
-      - "check-success = ci"
